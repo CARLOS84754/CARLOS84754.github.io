@@ -1,509 +1,911 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Virgilio Puraca Calapuja - Ingeniero de Sistemas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #4f46e5;
-            --accent: #7c3aed;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: var(--light);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to right, #2563eb, #4f46e5);
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            margin: 0 auto 20px;
-            background: linear-gradient(45deg, #3b82f6, #6366f1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        section {
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-        }
-        
-        h3 i {
-            margin-right: 10px;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .skill-category {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        
-        .skill-category h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-        }
-        
-        .skill-list {
-            list-style: none;
-        }
-        
-        .skill-list li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .skill-list li::before {
-            content: '▹';
-            color: var(--primary);
-            margin-right: 10px;
-        }
-        
-        .experience-item {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .experience-item:last-child {
-            border-bottom: none;
-        }
-        
-        .job-title {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .company {
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-        
-        .date {
-            color: var(--gray);
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .project-card {
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-content {
-            padding: 20px;
-        }
-        
-        .project-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .contact-link {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .contact-link i {
-            margin-right: 10px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            color: var(--gray);
-            margin-top: 50px;
-        }
-        
-        .quote {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        @media (max-width: 768px) {
-            .skills-grid, .project-grid {
-                grid-template-columns: 1fr;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Puraca | Ingeniero de Sistemas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+            secondary: {
+              50: '#faf6ff',
+              100: '#f3e8ff',
+              200: '#e9d5ff',
+              300: '#d8b4fe',
+              400: '#c084fc',
+              500: '#a855f7',
+              600: '#9333ea',
+              700: '#7e22ce',
+              800: '#6b21a8',
+              900: '#581c87',
             }
-            
-            h1 {
-                font-size: 2rem;
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+            'slide-up': 'slideUp 0.5s ease-out forwards',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
             }
-            
-            h2 {
-                font-size: 1.2rem;
-            }
-            
-            .stats-container {
-                flex-direction: column;
-            }
+          }
         }
-    </style>
+      }
+    }
+  </script>
+  <style type="text/css">
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .section-hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .section-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .skill-bar {
+      transition: width 1.5s ease-out;
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #4f46e5 0%, #7e22ce 100%);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #4f46e5, #7e22ce);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: -1;
+    }
+    
+    .blob-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(79, 70, 229, 0.2);
+      top: -100px;
+      left: -100px;
+    }
+    
+    .blob-2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(126, 34, 206, 0.2);
+      bottom: -100px;
+      right: -100px;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <div class="profile-img">
-                <i class="fas fa-user"></i>
-            </div>
-            <h1>Carlos Virgilio Puraca Calapuja</h1>
-            <h2>💻 Ingeniero de Sistemas | 🎓 Maestrante en Gerencia de TIC | 📊 Analista de Datos & Soluciones TI</h2>
-            <p class="tagline">Soy un profesional en la intersección entre el desarrollo tecnológico, la gestión de información y la estrategia empresarial. Mi expertise radica en diseñar, implementar y optimizar sistemas que automatizan procesos críticos y generan valor tangible.</p>
-        </header>
+<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+  <!-- Blob background elements -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
 
-        <section>
-            <h3><i class="fas fa-code"></i> Stack Tecnológico & Especialidades</h3>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Lenguajes de Programación</h4>
-                    <ul class="skill-list">
-                        <li>Python (Automatización, IA, Visión Artificial)</li>
-                        <li>PHP / Laravel (Desarrollo Web Full-Stack)</li>
-                        <li>C# / ASP.NET Core (Aplicaciones Empresariales)</li>
-                        <li>JavaScript/TypeScript (React.js, Node.js)</li>
-                        <li>Java</li>
-                        <li>SQL (Consultas avanzadas)</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Bases de Datos & Almacenamiento</h4>
-                    <ul class="skill-list">
-                        <li>MySQL</li>
-                        <li>SQL Server</li>
-                        <li>PostgreSQL</li>
-                        <li>MongoDB (NoSQL)</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Infraestructura & Herramientas</h4>
-                    <ul class="skill-list">
-                        <li>Git</li>
-                        <li>Docker</li>
-                        <li>VS Code</li>
-                        <li>Metodologías Ágiles (Scrum, Kanban)</li>
-                        <li>Microsoft Power Platform</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h4>Especialidades Técnicas</h4>
-                    <ul class="skill-list">
-                        <li>Automatización con Visión Artificial</li>
-                        <li>Sistemas de Gestión Académica</li>
-                        <li>Análisis de Datos y Modelos Predictivos</li>
-                        <li>Integración de APIs y Servicios en la Nube</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h3><i class="fas fa-briefcase"></i> Experiencia Profesional</h3>
-            
-            <div class="experience-item">
-                <div class="job-title">Docente de Informática</div>
-                <div class="company">INFOUNA - Universidad Nacional del Altipiano</div>
-                <div class="date">Impartiendo conocimiento en herramientas informáticas y fundamentos de la programación</div>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-title">Programador & Desarrollador de Sistemas</div>
-                <div class="company">Colegio de Economistas del Puno</div>
-                <div class="date">Enero 2024 - Abril 2024</div>
-                <ul class="skill-list">
-                    <li>Lideré el diseño, desarrollo e implementación de un sistema integral de colegiatura desde cero</li>
-                    <li>Módulos clave: Gestión de afiliados, estado de cuenta, procesamiento de pagos y postulación en línea</li>
-                    <li>Tecnologías: Laravel, React/JavaScript, MySQL</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-title">Desarrollador Full-Stack (Practicante Profesional)</div>
-                <div class="company">Estudio Contable Marín</div>
-                <div class="date">Septiembre 2023 - Diciembre 2023</div>
-                <ul class="skill-list">
-                    <li>Desarrollo de un sistema de facturación electrónica integrado con SUNAT</li>
-                    <li>Creación y despliegue de la página web corporativa</li>
-                    <li>Automatización de reportes contables</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h3><i class="fas fa-graduation-cap"></i> Formación Académica</h3>
-            
-            <div class="experience-item">
-                <div class="job-title">Bachiller en Ingeniería de Sistemas</div>
-                <div class="company">Universidad Nacional del Altipiano - UNAP</div>
-                <div class="date">2019 - 2023</div>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-title">Maestrante en Gerencia de Tecnologías de Información y Comunicaciones</div>
-                <div class="date">En curso</div>
-            </div>
-            
-            <div class="experience-item">
-                <div class="job-title">Ingeniería Económica (Cursando)</div>
-                <div class="company">Universidad Nacional del Altipiano - UNAP</div>
-                <div class="date">2020 - Actualidad</div>
-            </div>
-        </section>
-
-        <section>
-            <h3><i class="fas fa-rocket"></i> Proyectos Destacados</h3>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <div class="project-title">Sistema de Validación con Visión Artificial</div>
-                        <p>Sistema automático para validar fotografías de postulantes a posgrado según normativas SUNEDU.</p>
-                        <p><strong>Tecnologías:</strong> Python, OpenCV, Flask/FastAPI</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <div class="project-title">Sistema Integral de Colegiatura</div>
-                        <p>Plataforma web full-stack para la gestión completa de afiliados, pagos y servicios de una organización colegiada.</p>
-                        <p><strong>Tecnologías:</strong> Laravel, React, MySQL, APIs de pago</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <div class="project-title">Sistema de Facturación Electrónica</div>
-                        <p>Sistema completo de emisión de comprobantes electrónicos con integración a SUNAT y panel de control para reportes.</p>
-                        <p><strong>Tecnologías:</strong> Laravel/PHP, Bootstrap, jQuery, MySQL</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h3><i class="fas fa-chart-bar"></i> Estadísticas</h3>
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-desc">Años de Experiencia</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-desc">Proyectos Completados</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-desc">Tecnologías Dominadas</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-desc">Clientes Satisfechos</div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h3><i class="fas fa-envelope"></i> Contacto</h3>
-            <p>¿Interesado en colaborar? No dudes en contactarme a través de cualquiera de estos medios:</p>
-            
-            <div class="contact-links">
-                <a href="mailto:carlosvirgiliopc@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> Email
-                </a>
-                
-                <a href="https://linkedin.com/in/carlos-puraca" class="contact-link">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                
-                <a href="https://github.com/CarlosPuraca" class="contact-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
-        </section>
-
-        <footer>
-            <p class="quote">"Codeamos el presente, diseñamos el futuro. El desarrollo de sistemas no solo resuelve problemas, transforma realidades."</p>
-            <p>© 2023 Carlos Virgilio Puraca Calapuja. Todos los derechos reservados.</p>
-        </footer>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-sm shadow-md z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <a href="#" class="text-xl font-bold text-primary-600 flex items-center">
+        <span class="bg-primary-600 text-white p-2 rounded-lg mr-2"><i class="fas fa-code"></i></span>
+        Carlos Puraca
+      </a>
+      
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex space-x-8">
+        <li><a href="#about" class="hover:text-primary-600 transition-colors font-medium">Sobre Mí</a></li>
+        <li><a href="#experience" class="hover:text-primary-600 transition-colors font-medium">Experiencia</a></li>
+        <li><a href="#education" class="hover:text-primary-600 transition-colors font-medium">Educación</a></li>
+        <li><a href="#skills" class="hover:text-primary-600 transition-colors font-medium">Habilidades</a></li>
+        <li><a href="#projects" class="hover:text-primary-600 transition-colors font-medium">Proyectos</a></li>
+        <li><a href="#contact" class="hover:text-primary-600 transition-colors font-medium">Contacto</a></li>
+      </ul>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-primary-600" id="mobile-menu-button">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
     </div>
+    
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden bg-white py-4 px-6 shadow-lg" id="mobile-menu">
+      <ul class="space-y-4">
+        <li><a href="#about" class="block hover:text-primary-600 transition-colors font-medium">Sobre Mí</a></li>
+        <li><a href="#experience" class="block hover:text-primary-600 transition-colors font-medium">Experiencia</a></li>
+        <li><a href="#education" class="block hover:text-primary-600 transition-colors font-medium">Educación</a></li>
+        <li><a href="#skills" class="block hover:text-primary-600 transition-colors font-medium">Habilidades</a></li>
+        <li><a href="#projects" class="block hover:text-primary-600 transition-colors font-medium">Proyectos</a></li>
+        <li><a href="#contact" class="block hover:text-primary-600 transition-colors font-medium">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <script>
-        // Efecto de escritura para el título
-        document.addEventListener('DOMContentLoaded', function() {
-            const titles = document.querySelectorAll('.job-title, .project-title');
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center relative z-10">
+      <div class="md:w-2/3 mb-10 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-slide-up">Carlos Virgilio Puraca Calapuja</h1>
+        <p class="text-xl md:text-2xl mb-6 animate-slide-up" style="animation-delay: 0.2s;">
+          <span class="inline-block bg-white/20 px-3 py-1 rounded-full mr-2">👨‍💻</span>
+          <span class="font-medium">Ingeniero de Sistemas</span> | 
+          <span class="font-medium">Administrador</span> | 
+          <span class="font-medium">Estudiante de Ingeniería Económica</span>
+        </p>
+        <p class="mb-8 text-lg opacity-90 animate-slide-up" style="animation-delay: 0.4s;">
+          Profesional multidisciplinario con experiencia en desarrollo de sistemas, análisis financiero 
+          y gestión estratégica de negocios internacionales.
+        </p>
+        <div class="flex flex-wrap gap-4 animate-slide-up" style="animation-delay: 0.6s;">
+          <a href="#contact" class="bg-white text-primary-600 font-semibold px-6 py-3 rounded-lg shadow-lg hover:bg-gray-100 transition-all flex items-center">
+            <i class="fas fa-paper-plane mr-2"></i> Contáctame
+          </a>
+          <a href="#projects" class="border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-primary-600 transition-all flex items-center">
+            <i class="fas fa-briefcase mr-2"></i> Ver Proyectos
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/3 flex justify-center animate-float">
+        <div class="relative">
+          <div class="w-64 h-64 bg-white/10 rounded-full flex items-center justify-center border-4 border-white/30 shadow-2xl">
+            <div class="w-56 h-56 bg-white/5 rounded-full flex items-center justify-center border-4 border-white/20">
+              <img src="https://placehold.co/200x200/6c63ff/ffffff?text=CP" alt="Foto de perfil" class="w-48 h-48 rounded-full object-cover border-4 border-white shadow-xl">
+            </div>
+          </div>
+          <div class="absolute -bottom-2 -left-2 bg-primary-400 text-white px-4 py-2 rounded-full shadow-lg">
+            <i class="fas fa-star mr-1"></i> Disponible
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <a href="#about" class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white section-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">
+        <span class="text-gradient">Sobre Mí</span>
+      </h2>
+      <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+        Conoce más sobre mi trayectoria profesional, mis habilidades y lo que me motiva
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-lg leading-relaxed mb-6">
+            Soy un <span class="text-primary-600 font-semibold">profesional multidisciplinario</span> con experiencia 
+            en <span class="text-primary-600 font-semibold">Ingeniería de Sistemas</span>, 
+            <span class="text-primary-600 font-semibold">Ingeniería Económica</span> y 
+            <span class="text-primary-600 font-semibold">Negocios Internacionales</span>. 
+            Mi enfoque integral combina el desarrollo tecnológico con el análisis financiero 
+            y la estrategia empresarial para crear soluciones innovadoras.
+          </p>
+          <p class="text-lg leading-relaxed mb-8">
+            Me apasiona diseñar e implementar sistemas de información que mejoren la eficiencia 
+            operativa y aporten valor tangible a las organizaciones. Mi formación diversa me permite 
+            abordar proyectos desde múltiples perspectivas, garantizando resultados que satisfacen 
+            tanto los requisitos técnicos como los objetivos de negocio.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-gray-50 p-4 rounded-lg text-center card-hover">
+              <div class="text-primary-600 text-2xl mb-2">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3 class="font-semibold">Desarrollo de Sistemas</h3>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg text-center card-hover">
+              <div class="text-primary-600 text-2xl mb-2">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="font-semibold">Análisis Económico</h3>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg text-center card-hover">
+              <div class="text-primary-600 text-2xl mb-2">
+                <i class="fas fa-globe-americas"></i>
+              </div>
+              <h3 class="font-semibold">Negocios Globales</h3>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg text-center card-hover">
+              <div class="text-primary-600 text-2xl mb-2">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <h3 class="font-semibold">Gestión de Proyectos</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-primary-500 to-secondary-600 p-1 rounded-2xl shadow-xl">
+          <div class="bg-white rounded-2xl p-6 h-full">
+            <h3 class="font-bold text-xl mb-6 text-center text-gray-800">Información Personal</h3>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 mr-4">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Nombre completo</p>
+                  <p class="font-medium">Carlos Virgilio Puraca Calapuja</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 mr-4">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Títulos</p>
+                  <p class="font-medium">Bach. en Ing. de Sistemas, Administrador</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 mr-4">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">En formación</p>
+                  <p class="font-medium">Ingeniería Económica</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 mr-4">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Ubicación</p>
+                  <p class="font-medium">Puno, Perú</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 mr-4">
+                  <i class="fas fa-briefcase"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Disponibilidad</p>
+                  <p class="font-medium">Full-time / Freelance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-16 bg-gray-50 section-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">
+        <span class="text-gradient">Experiencia Laboral</span>
+      </h2>
+      <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+        Mi trayectoria profesional en el desarrollo de sistemas y gestión de proyectos
+      </p>
+      
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-4 md:left-1/2 h-full w-1 bg-primary-200 transform -translate-x-1/2"></div>
+        
+        <!-- Timeline items -->
+        <div class="space-y-12">
+          <!-- Item 1 -->
+          <div class="relative pl-10 md:pl-0 md:flex">
+            <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0">
+              <h3 class="text-xl font-bold text-gray-800">Programador</h3>
+              <p class="text-primary-600 font-medium">Colegio de Economistas del Puno</p>
+              <span class="text-gray-500 text-sm">Ene 2024 – Abr 2024</span>
+            </div>
+            <div class="absolute left-2 md:left-1/2 w-4 h-4 rounded-full bg-primary-600 border-4 border-white transform -translate-x-1/2"></div>
+            <div class="md:w-1/2 md:pl-10">
+              <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                <p class="mb-4">Desarrollo e implementación del sistema de colegiatura digital para la gestión de miembros, pagos y servicios en línea.</p>
+                <ul class="text-gray-700 space-y-2">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                    <span>Desarrollo de módulos de gestión de pagos y visualización de estados de cuenta</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                    <span>Implementación de sistema de postulaciones en línea</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                    <span>Mejora de la experiencia del usuario y satisfacción de los colegiados</span>
+                  </li>
+                </ul>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">React</span>
+                  <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                  <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Item 2 -->
+          <div class="relative pl-10 md:pl-0 md:flex">
+            <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0">
+              <h3 class="text-xl font-bold text-gray-800">Practicante Profesional</h3>
+              <p class="text-primary-600 font-medium">Estudio Contable Marín</p>
+              <span class="text-gray-500 text-sm">Sep 2023 – Dic 2023</span>
+            </div>
+            <div class="absolute left-2 md:left-1/2 w-4 h-4 rounded-full bg-primary-600 border-4 border-white transform -translate-x-1/2"></div>
+            <div class="md:w-1/2 md:pl-10">
+              <div class="bg-white p-6 rounded-xl shadow-sm card-hover">
+                <p class="mb-4">Desarrollo e implementación de sistema de facturación electrónica y página web corporativa.</p>
+                <ul class="text-gray-700 space-y-2">
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                    <span>Implementación de sistema de facturación electrónica con integración SUNAT</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                    <span>Desarrollo de página web institucional responsive</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-primary-600 mt-1 mr-2"></i>
+                    <span>Mejora de la eficiencia operativa y presencia digital del estudio</span>
+                  </li>
+                </ul>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">PHP</span>
+                  <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                  <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">HTML/CSS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Additional items would follow the same pattern -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-16 bg-white section-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">
+        <span class="text-gradient">Formación Académica</span>
+      </h2>
+      <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+        Mi trayectoria educativa y especializaciones profesionales
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-primary-500 to-primary-700 p-1 rounded-2xl shadow-lg card-hover">
+          <div class="bg-white rounded-2xl p-6 h-full flex flex-col">
+            <div class="w-16 h-16 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 text-2xl mb-6">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-2 text-gray-800">Ingeniería de Sistemas</h3>
+            <p class="text-primary-600 font-medium mb-2">Universidad Nacional del Altipiano - UNAP</p>
+            <p class="text-gray-500 text-sm mb-4">2019 – 2023</p>
+            <p class="text-gray-700 flex-grow">Bachiller en Ingeniería de Sistemas con especialización en desarrollo de software y arquitectura de sistemas.</p>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-500">Estado:</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full">Completado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-secondary-500 to-secondary-700 p-1 rounded-2xl shadow-lg card-hover">
+          <div class="bg-white rounded-2xl p-6 h-full flex flex-col">
+            <div class="w-16 h-16 rounded-full bg-secondary-100 flex items-center justify-center text-secondary-600 text-2xl mb-6">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-2 text-gray-800">Ingeniería Económica</h3>
+            <p class="text-secondary-600 font-medium mb-2">Universidad Nacional del Altipiano - UNAP</p>
+            <p class="text-gray-500 text-sm mb-4">2020 – Actualidad</p>
+            <p class="text-gray-700 flex-grow">Formación en evaluación de proyectos, análisis financiero y gestión económica de organizaciones.</p>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-500">Estado:</span>
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full">En progreso</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-500 to-purple-700 p-1 rounded-2xl shadow-lg card-hover">
+          <div class="bg-white rounded-2xl p-6 h-full flex flex-col">
+            <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mb-6">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-2 text-gray-800">Administración de Negocios Internacionales</h3>
+            <p class="text-purple-600 font-medium mb-2">Instituto ADEX</p>
+            <p class="text-gray-500 text-sm mb-4">2015 – 2018</p>
+            <p class="text-gray-700 flex-grow">Especialización en comercio exterior, logística internacional y estrategias de negocios globales.</p>
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-500">Estado:</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full">Completado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-16 bg-gray-50 section-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">
+        <span class="text-gradient">Habilidades Técnicas</span>
+      </h2>
+      <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+        Conjunto de habilidades y tecnologías que domino
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <h3 class="text-xl font-semibold mb-6 flex items-center">
+            <i class="fas fa-code text-primary-600 mr-3"></i> Desarrollo de Software
+          </h3>
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">JavaScript / React</span>
+                <span class="text-primary-600 font-semibold">90%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="90%"></div>
+              </div>
+            </div>
             
-            titles.forEach(title => {
-                const originalText = title.textContent;
-                title.textContent = '';
-                
-                let i = 0;
-                const typeWriter = () => {
-                    if (i < originalText.length) {
-                        title.textContent += originalText.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, 50);
-                    }
-                };
-                
-                // Iniciar el efecto cuando el elemento es visible
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            typeWriter();
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                });
-                
-                observer.observe(title);
-            });
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Node.js</span>
+                <span class="text-primary-600 font-semibold">85%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="85%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">HTML / CSS / Tailwind</span>
+                <span class="text-primary-600 font-semibold">95%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="95%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">PHP</span>
+                <span class="text-primary-600 font-semibold">80%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-semibold mb-6 flex items-center">
+            <i class="fas fa-database text-primary-600 mr-3"></i> Bases de Datos & Herramientas
+          </h3>
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">MySQL</span>
+                <span class="text-primary-600 font-semibold">88%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="88%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">MongoDB</span>
+                <span class="text-primary-600 font-semibold">75%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="75%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Git / GitHub</span>
+                <span class="text-primary-600 font-semibold">85%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="85%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Docker</span>
+                <span class="text-primary-600 font-semibold">70%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="skill-bar bg-primary-600 h-3 rounded-full" style="width: 0%" data-width="70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="text-xl font-semibold mt-16 mb-6 text-center">
+        <span class="text-gradient">Otras Habilidades</span>
+      </h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-medium flex items-center">
+          <i class="fas fa-chart-line mr-2"></i> Análisis Financiero
+        </span>
+        <span class="bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-medium flex items-center">
+          <i class="fas fa-project-diagram mr-2"></i> Gestión de Proyectos
+        </span>
+        <span class="bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-medium flex items-center">
+          <i class="fas fa-globe mr-2"></i> Negocios Internacionales
+        </span>
+        <span class="bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-medium flex items-center">
+          <i class="fas fa-bullseye mr-2"></i> Solución de Problemas
+        </span>
+        <span class="bg-primary-100 text-primary-800 px-4 py-2 rounded-full font-medium flex items-center">
+          <i class="fas fa-users mr-2"></i> Trabajo en Equipo
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-16 bg-white section-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">
+        <span class="text-gradient">Proyectos Destacados</span>
+      </h2>
+      <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+        Algunos de los trabajos recientes que he desarrollado
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="h-48 bg-gradient-to-r from-primary-500 to-primary-700 flex items-center justify-center">
+            <i class="fas fa-user-graduate text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Sistema de Colegiatura</h3>
+            <p class="text-gray-600 mb-4">Plataforma integral para gestión de colegiados, pagos en línea y servicios digitales.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">React</span>
+              <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+              <span class="bg-primary-100 text-primary-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+            </div>
+            <a href="#" class="text-primary-600 font-medium flex items-center">
+              Ver detalles <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="h-48 bg-gradient-to-r from-secondary-500 to-secondary-700 flex items-center justify-center">
+            <i class="fas fa-file-invoice-dollar text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Sistema de Facturación Electrónica</h3>
+            <p class="text-gray-600 mb-4">Solución completa de facturación electrónica con integración SUNAT y reportes digitales.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-secondary-100 text-secondary-800 text-xs px-3 py-1 rounded-full">PHP</span>
+              <span class="bg-secondary-100 text-secondary-800 text-xs px-3 py-1 rounded-full">JavaScript</span>
+              <span class="bg-secondary-100 text-secondary-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+            </div>
+            <a href="#" class="text-secondary-600 font-medium flex items-center">
+              Ver detalles <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="h-48 bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-center">
+            <i class="fas fa-graduation-cap text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Sistema de Postulación UNAP</h3>
+            <p class="text-gray-600 mb-4">Plataforma de postulación para programas de posgrado con gestión integral de procesos.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">React</span>
+              <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+              <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">MongoDB</span>
+            </div>
+            <a href="#" class="text-purple-600 font-medium flex items-center">
+              Ver detalles <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="h-48 bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center">
+            <i class="fas fa-robot text-white text-5xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2">Visión Artificial SUNEDU</h3>
+            <p class="text-gray-600 mb-4">Sistema de validación automática de fotografías para grados y títulos usando inteligencia artificial.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">OpenCV</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">TensorFlow</span>
+            </div>
+            <a href="#" class="text-blue-600 font-medium flex items-center">
+              Ver detalles <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition">
+          <i class="fas fa-briefcase mr-2"></i> Ver todos los proyectos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 gradient-bg text-white section-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">Contacto</h2>
+      <p class="text-center text-white/80 max-w-3xl mx-auto mb-12">
+        ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <p class="text-xl mb-6">Estoy disponible para proyectos freelance, oportunidades laborales y colaboraciones.</p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white mr-4">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold">Email</h3>
+                <a href="mailto:carlosvirgiliopc@gmail.com" class="text-white/80 hover:text-white">carlosvirgiliopc@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white mr-4">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold">Ubicación</h3>
+                <p class="text-white/80">Puno, Perú</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white mr-4">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold">Teléfono</h3>
+                <p class="text-white/80">+51 XXX XXX XXX</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex space-x-4 mt-8">
+            <a href="#" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2">Nombre completo</label>
+              <input type="text" id="name" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent" placeholder="Tu nombre">
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email</label>
+              <input type="email" id="email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent" placeholder="tu@email.com">
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium mb-2">Mensaje</label>
+              <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent" placeholder="¿En qué puedo ayudarte?"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-white text-primary-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition flex items-center justify-center">
+              <i class="fas fa-paper-plane mr-2"></i> Enviar mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <div class="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+        <i class="fas fa-code"></i>
+      </div>
+      <h3 class="text-2xl font-bold mb-4">Carlos Virgilio Puraca Calapuja</h3>
+      <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+        Ingeniero de Sistemas | Administrador | Estudiante de Ingeniería Económica
+      </p>
+      
+      <div class="flex justify-center space-x-6 mb-8">
+        <a href="#" class="text-gray-400 hover:text-white transition">
+          <i class="fab fa-linkedin-in text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white transition">
+          <i class="fab fa-github text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white transition">
+          <i class="fab fa-twitter text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-white transition">
+          <i class="fab fa-instagram text-xl"></i>
+        </a>
+      </div>
+      
+      <p class="text-gray-500 text-sm">
+        © 2025 Carlos Virgilio Puraca Calapuja. Todos los derechos reservados.
+      </p>
+      <p class="text-gray-500 text-sm mt-2">
+        💻 "El desarrollo de sistemas transforma realidades."
+      </p>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Scroll animations for sections
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section-hidden');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+          }
         });
-    </script>
+      }, {
+        threshold: 0.1
+      });
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      // Animate skill bars
+      const skillBars = document.querySelectorAll('.skill-bar');
+      
+      const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const width = entry.target.getAttribute('data-width');
+            entry.target.style.width = width;
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+      
+      skillBars.forEach(bar => {
+        skillsObserver.observe(bar);
+      });
+      
+      // Back to top button
+      const backToTopButton = document.getElementById('back-to-top');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.remove('opacity-0', 'invisible');
+          backToTopButton.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopButton.classList.remove('opacity-100', 'visible');
+          backToTopButton.classList.add('opacity-0', 'invisible');
+        }
+      });
+      
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Close mobile menu when clicking on a link
+      const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
