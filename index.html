@@ -1,125 +1,509 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carlos Puraca | CV Online</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Virgilio Puraca Calapuja - Ingeniero de Sistemas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #4f46e5;
+            --accent: #7c3aed;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to right, #2563eb, #4f46e5);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #3b82f6, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        section {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        h3 i {
+            margin-right: 10px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .skill-category h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li::before {
+            content: '▹';
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            color: var(--gray);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-link i {
+            margin-right: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--gray);
+            margin-top: 50px;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .skills-grid, .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Carlos Virgilio Puraca Calapuja</h1>
+            <h2>💻 Ingeniero de Sistemas | 🎓 Maestrante en Gerencia de TIC | 📊 Analista de Datos & Soluciones TI</h2>
+            <p class="tagline">Soy un profesional en la intersección entre el desarrollo tecnológico, la gestión de información y la estrategia empresarial. Mi expertise radica en diseñar, implementar y optimizar sistemas que automatizan procesos críticos y generan valor tangible.</p>
+        </header>
 
-  <!-- HEADER -->
-  <header class="bg-gray-900 text-white py-8 shadow-lg">
-    <div class="max-w-5xl mx-auto text-center">
-      <h1 class="text-4xl font-bold">Carlos Virgilio Puraca Calapuja</h1>
-      <p class="text-lg mt-2">👨‍💻 Ingeniero de Sistemas | 📈 Economista en formación | 🌍 Negocios Internacionales</p>
-      <div class="mt-4 flex justify-center space-x-4">
-        <a href="mailto:carlosvirgiliopc@gmail.com" class="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700">📧 Email</a>
-        <a href="https://linkedin.com/in/tuperfil" target="_blank" class="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">💼 LinkedIn</a>
-        <a href="http://carlosvirgiliopc.com" target="_blank" class="bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700">🌐 Portfolio</a>
-      </div>
+        <section>
+            <h3><i class="fas fa-code"></i> Stack Tecnológico & Especialidades</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Lenguajes de Programación</h4>
+                    <ul class="skill-list">
+                        <li>Python (Automatización, IA, Visión Artificial)</li>
+                        <li>PHP / Laravel (Desarrollo Web Full-Stack)</li>
+                        <li>C# / ASP.NET Core (Aplicaciones Empresariales)</li>
+                        <li>JavaScript/TypeScript (React.js, Node.js)</li>
+                        <li>Java</li>
+                        <li>SQL (Consultas avanzadas)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Bases de Datos & Almacenamiento</h4>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>SQL Server</li>
+                        <li>PostgreSQL</li>
+                        <li>MongoDB (NoSQL)</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Infraestructura & Herramientas</h4>
+                    <ul class="skill-list">
+                        <li>Git</li>
+                        <li>Docker</li>
+                        <li>VS Code</li>
+                        <li>Metodologías Ágiles (Scrum, Kanban)</li>
+                        <li>Microsoft Power Platform</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>Especialidades Técnicas</h4>
+                    <ul class="skill-list">
+                        <li>Automatización con Visión Artificial</li>
+                        <li>Sistemas de Gestión Académica</li>
+                        <li>Análisis de Datos y Modelos Predictivos</li>
+                        <li>Integración de APIs y Servicios en la Nube</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3><i class="fas fa-briefcase"></i> Experiencia Profesional</h3>
+            
+            <div class="experience-item">
+                <div class="job-title">Docente de Informática</div>
+                <div class="company">INFOUNA - Universidad Nacional del Altipiano</div>
+                <div class="date">Impartiendo conocimiento en herramientas informáticas y fundamentos de la programación</div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Programador & Desarrollador de Sistemas</div>
+                <div class="company">Colegio de Economistas del Puno</div>
+                <div class="date">Enero 2024 - Abril 2024</div>
+                <ul class="skill-list">
+                    <li>Lideré el diseño, desarrollo e implementación de un sistema integral de colegiatura desde cero</li>
+                    <li>Módulos clave: Gestión de afiliados, estado de cuenta, procesamiento de pagos y postulación en línea</li>
+                    <li>Tecnologías: Laravel, React/JavaScript, MySQL</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Desarrollador Full-Stack (Practicante Profesional)</div>
+                <div class="company">Estudio Contable Marín</div>
+                <div class="date">Septiembre 2023 - Diciembre 2023</div>
+                <ul class="skill-list">
+                    <li>Desarrollo de un sistema de facturación electrónica integrado con SUNAT</li>
+                    <li>Creación y despliegue de la página web corporativa</li>
+                    <li>Automatización de reportes contables</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3><i class="fas fa-graduation-cap"></i> Formación Académica</h3>
+            
+            <div class="experience-item">
+                <div class="job-title">Bachiller en Ingeniería de Sistemas</div>
+                <div class="company">Universidad Nacional del Altipiano - UNAP</div>
+                <div class="date">2019 - 2023</div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Maestrante en Gerencia de Tecnologías de Información y Comunicaciones</div>
+                <div class="date">En curso</div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-title">Ingeniería Económica (Cursando)</div>
+                <div class="company">Universidad Nacional del Altipiano - UNAP</div>
+                <div class="date">2020 - Actualidad</div>
+            </div>
+        </section>
+
+        <section>
+            <h3><i class="fas fa-rocket"></i> Proyectos Destacados</h3>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-title">Sistema de Validación con Visión Artificial</div>
+                        <p>Sistema automático para validar fotografías de postulantes a posgrado según normativas SUNEDU.</p>
+                        <p><strong>Tecnologías:</strong> Python, OpenCV, Flask/FastAPI</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-title">Sistema Integral de Colegiatura</div>
+                        <p>Plataforma web full-stack para la gestión completa de afiliados, pagos y servicios de una organización colegiada.</p>
+                        <p><strong>Tecnologías:</strong> Laravel, React, MySQL, APIs de pago</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-title">Sistema de Facturación Electrónica</div>
+                        <p>Sistema completo de emisión de comprobantes electrónicos con integración a SUNAT y panel de control para reportes.</p>
+                        <p><strong>Tecnologías:</strong> Laravel/PHP, Bootstrap, jQuery, MySQL</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3><i class="fas fa-chart-bar"></i> Estadísticas</h3>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-desc">Años de Experiencia</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-desc">Proyectos Completados</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-desc">Tecnologías Dominadas</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-desc">Clientes Satisfechos</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3><i class="fas fa-envelope"></i> Contacto</h3>
+            <p>¿Interesado en colaborar? No dudes en contactarme a través de cualquiera de estos medios:</p>
+            
+            <div class="contact-links">
+                <a href="mailto:carlosvirgiliopc@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                
+                <a href="https://linkedin.com/in/carlos-puraca" class="contact-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                
+                <a href="https://github.com/CarlosPuraca" class="contact-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p class="quote">"Codeamos el presente, diseñamos el futuro. El desarrollo de sistemas no solo resuelve problemas, transforma realidades."</p>
+            <p>© 2023 Carlos Virgilio Puraca Calapuja. Todos los derechos reservados.</p>
+        </footer>
     </div>
-  </header>
 
-  <!-- PERFIL -->
-  <section class="max-w-5xl mx-auto py-10 px-6">
-    <h2 class="text-2xl font-semibold border-b-4 border-blue-500 inline-block mb-6">📌 Perfil Profesional</h2>
-    <p class="text-lg leading-relaxed">
-      Soy un profesional multidisciplinario especializado en <b>desarrollo de sistemas</b>, 
-      con experiencia en la integración de soluciones digitales para procesos académicos, administrativos y de gestión.  
-      Mi formación en <b>Ingeniería de Sistemas, Ingeniería Económica y Negocios Internacionales</b> 
-      me permite aportar una visión técnica, financiera y estratégica a los proyectos.
-    </p>
-  </section>
-
-  <!-- EXPERIENCIA -->
-  <section class="bg-white py-10 shadow-sm">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-2xl font-semibold border-b-4 border-blue-500 inline-block mb-6">💼 Experiencia Profesional</h2>
-      <div class="space-y-6">
-        
-        <div>
-          <h3 class="text-xl font-bold">Programador — Colegio de Economistas del Puno</h3>
-          <span class="text-gray-500">Ene 2024 – Abr 2024</span>
-          <p>Desarrollo de un sistema integral de colegiatura con módulos de pagos y servicios en línea (React, Node.js, MySQL).</p>
-        </div>
-
-        <div>
-          <h3 class="text-xl font-bold">Practicante Profesional — Estudio Contable Marín</h3>
-          <span class="text-gray-500">Sep 2023 – Dic 2023</span>
-          <p>Implementación de facturación electrónica y página web corporativa, mejorando la eficiencia en la gestión contable.</p>
-        </div>
-
-        <div>
-          <h3 class="text-xl font-bold">Practicante Profesional — Universidad Nacional del Altiplano (UNAP)</h3>
-          <span class="text-gray-500">Abr 2023 – Jul 2023</span>
-          <p>Diseño e implementación de un sistema de postulación de posgrado, optimizando procesos administrativos.</p>
-        </div>
-
-        <div>
-          <h3 class="text-xl font-bold">Auxiliar de Oficina — SERPOST</h3>
-          <span class="text-gray-500">Abr 2018 – Jun 2018</span>
-          <p>Gestión integral de correspondencia y mejora de procesos de atención al cliente.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCACIÓN -->
-  <section class="max-w-5xl mx-auto py-10 px-6">
-    <h2 class="text-2xl font-semibold border-b-4 border-blue-500 inline-block mb-6">🎓 Formación Académica</h2>
-    <ul class="list-disc pl-6 space-y-2 text-lg">
-      <li><b>Ingeniería de Sistemas</b> — UNAP (2019 – 2023)</li>
-      <li><b>Ingeniería Económica (En curso)</b> — UNAP (2020 – Actualidad)</li>
-      <li><b>Administración de Negocios Internacionales</b> — ADEX (2015 – 2018)</li>
-    </ul>
-  </section>
-
-  <!-- PROYECTOS -->
-  <section class="bg-white py-10 shadow-sm">
-    <div class="max-w-5xl mx-auto px-6">
-      <h2 class="text-2xl font-semibold border-b-4 border-blue-500 inline-block mb-6">🚀 Proyectos Destacados</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        
-        <div class="p-4 border rounded-lg hover:shadow-lg transition">
-          <h3 class="font-bold text-lg">Sistema de Colegiatura</h3>
-          <p class="text-gray-600">Plataforma para gestión de colegiados y pagos en línea.</p>
-        </div>
-
-        <div class="p-4 border rounded-lg hover:shadow-lg transition">
-          <h3 class="font-bold text-lg">Facturación Electrónica</h3>
-          <p class="text-gray-600">Implementación con integración SUNAT y reportes digitales.</p>
-        </div>
-
-        <div class="p-4 border rounded-lg hover:shadow-lg transition">
-          <h3 class="font-bold text-lg">Sistema de Postulación UNAP</h3>
-          <p class="text-gray-600">Automatización del proceso de admisión de posgrado.</p>
-        </div>
-
-        <div class="p-4 border rounded-lg hover:shadow-lg transition">
-          <h3 class="font-bold text-lg">Visión Artificial SUNEDU</h3>
-          <p class="text-gray-600">Validación automática de fotografías de posgrado con IA.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section class="max-w-5xl mx-auto py-10 px-6 text-center">
-    <h2 class="text-2xl font-semibold border-b-4 border-blue-500 inline-block mb-6">📫 Contacto</h2>
-    <p class="text-lg">¿Quieres trabajar conmigo? Escríbeme:</p>
-    <div class="mt-4 space-x-4">
-      <a href="mailto:carlosvirgiliopc@gmail.com" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Enviar Email</a>
-      <a href="https://linkedin.com/in/tuperfil" target="_blank" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">LinkedIn</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white text-center py-6">
-    <p>© 2025 Carlos Puraca - CV Online | “El desarrollo de sistemas transforma realidades.”</p>
-  </footer>
-
+    <script>
+        // Efecto de escritura para el título
+        document.addEventListener('DOMContentLoaded', function() {
+            const titles = document.querySelectorAll('.job-title, .project-title');
+            
+            titles.forEach(title => {
+                const originalText = title.textContent;
+                title.textContent = '';
+                
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < originalText.length) {
+                        title.textContent += originalText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    }
+                };
+                
+                // Iniciar el efecto cuando el elemento es visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            typeWriter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(title);
+            });
+        });
+    </script>
 </body>
 </html>
